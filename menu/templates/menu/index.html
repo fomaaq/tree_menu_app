@@ -1,0 +1,18 @@
+{% load menu_tags %}
+
+<h2>Tree menu App</h2>
+
+{% if menus %}
+    <ul>
+        {% for menu in menus %}
+            <li><a href='{{ menu.get_absolute_url }}'>{{ menu }}</li>
+        {% endfor %}
+    </ul>    
+{% elif menu_name %}
+    <h3>{{ menu_name }}</h3>
+    {% draw_menu menu_name menu_item %}
+    <h4><a href={% url 'main_menu' %}>Home</h4>
+{% elif error_message %}
+    {% include 'menu/error.html' %}
+    <h4><a href={% url 'main_menu' %}>Home</h4>
+{% endif %}

@@ -1,0 +1,11 @@
+<ul>
+    {% for item in menu %}
+        {% if item.url %}
+            <li><a href='{{ item.url }}'>{{ item }}</a></li>
+        {% elif item.name %}
+            <li><a href='{{ item }}'>{{ item }}</a></li>
+        {% else %}
+            {% include 'menu/menu.html' with menu=item %}
+        {% endif %}
+    {% endfor %}
+</ul>
